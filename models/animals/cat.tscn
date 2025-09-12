@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpf4g4l47fft2"]
+
+[ext_resource type="PackedScene" uid="uid://buts010am80ho" path="res://models/animals/GLTF/Cat.glb" id="1_os3f3"]
+[ext_resource type="Script" uid="uid://cxtyqp766jas2" path="res://models/animals/cat.gd" id="1_ty88c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_os3f3"]
+size = Vector3(0.535156, 0.657852, 1.1521)
+
+[node name="Cat" type="CharacterBody3D"]
+script = ExtResource("1_ty88c")
+
+[node name="Cat2" parent="." instance=ExtResource("1_os3f3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.331383, -0.276245)
+shape = SubResource("BoxShape3D_os3f3")

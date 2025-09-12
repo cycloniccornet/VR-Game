@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://b76ow8tad8mvr"]
+
+[ext_resource type="Script" uid="uid://cgwg7tyrwreyv" path="res://main.gd" id="1_0usdb"]
+[ext_resource type="PackedScene" uid="uid://di5riifrtwrlu" path="res://models/Player/character_body_3d.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://72x8dv67np16" path="res://objects/world.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bpf4g4l47fft2" path="res://models/animals/cat.tscn" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://bf7obygb7xjxf" path="res://models/animals/vaca.tscn" id="12_ycdy4"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_0usdb")
+
+[node name="World" parent="." instance=ExtResource("6_7mycd")]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_lquwl")]
+
+[node name="Cat" parent="." instance=ExtResource("12_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334957, 0.755922, -4.73312)
+
+[node name="Vaca" parent="." instance=ExtResource("12_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13953, 1.30049, -1.10715)
+
+[node name="Vaca2" parent="." instance=ExtResource("12_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48465, 1.21194, -1.0585)

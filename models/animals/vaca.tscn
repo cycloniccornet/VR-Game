@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf7obygb7xjxf"]
+
+[ext_resource type="PackedScene" uid="uid://b143q7jvmk5lv" path="res://models/animals/GLTF/Cow.glb" id="1_3xg7v"]
+[ext_resource type="Script" uid="uid://unvh0onso3dp" path="res://models/animals/vaca.gd" id="1_ly8n2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ly8n2"]
+size = Vector3(0.912476, 1.48438, 1.97461)
+
+[node name="Vaca" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281109, 0)
+script = ExtResource("1_ly8n2")
+
+[node name="Cow2" parent="." instance=ExtResource("1_3xg7v")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0217226, -0.239155, 0.100581)
+shape = SubResource("BoxShape3D_ly8n2")
