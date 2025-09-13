@@ -13,8 +13,11 @@ var start_time_ms: int = 0
 var pose_time_ms: int = 0
 @export var start_hold_ms: int = 150
 @export var pose_hold_ms: int = 120
-@export var armed_timeout_ms: int = 5000
+@export var armed_timeout_ms: int = 3000
 var out_of_start_ms: int = 0
+
+# NEW: strict elapsed while ARMED
+var armed_elapsed_ms: int = 0
 
 # === Throw ===
 @export var history_len: int = 8
@@ -120,9 +123,17 @@ func _physics_process(delta: float) -> void:
 				state = GState.ARMED
 				pose_time_ms = 0
 				out_of_start_ms = 0
+				armed_elapsed_ms = 0          # NEW
 				print("\n====================[  A R M E D  ]====================\n")
 
 		GState.ARMED:
+			# NEW: strict 3s disarm, regardless of pose
+			armed_elapsed_ms += int(delta * 1000.0)
+			if armed_elapsed_ms >= 3000:     # or use armed_timeout_ms if you prefer
+				print("[DISARM] auto-timeout after 3s")
+				_reset_pose()
+				return
+
 			var pose: Dictionary = pd.is_spawn_ok(left.global_transform, right.global_transform, H_inv)
 			var ok_pose: bool = bool(pose.get("ok", false))
 			pose_time_ms = (pose_time_ms + int(delta * 1000.0)) if ok_pose else max(pose_time_ms - int(delta * 600.0), 0)
@@ -134,7 +145,7 @@ func _physics_process(delta: float) -> void:
 			var still_start: bool = bool(pd.is_start_ok(left.global_transform, right.global_transform, H_inv).get("ok", false))
 			out_of_start_ms = 0 if still_start else (out_of_start_ms + int(delta * 1000.0))
 			if out_of_start_ms >= armed_timeout_ms:
-				print("[DISARM] timeout")
+				print("[DISARM] timeout (out of start pose)")
 				_reset_pose()
 
 func _push_mid(p: Vector3) -> void:
