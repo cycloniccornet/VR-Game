@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b76ow8tad8mvr"]
 
 [ext_resource type="Script" uid="uid://cgwg7tyrwreyv" path="res://main.gd" id="1_0usdb"]
-[ext_resource type="PackedScene" uid="uid://di5riifrtwrlu" path="res://models/Player/character_body_3d.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://di5riifrtwrlu" path="res://models/Player/Player.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://72x8dv67np16" path="res://objects/world.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bpf4g4l47fft2" path="res://models/animals/cat.tscn" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bf7obygb7xjxf" path="res://models/animals/vaca.tscn" id="12_ycdy4"]
