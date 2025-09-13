@@ -83,6 +83,12 @@ func _ready() -> void:
 		mode = SquareShot.new()
 	add_child(mode) # SpawnMode is a Node3D
 
+	# NEW: keep guides in sync with PoseDetector bands
+	mode.hips_band_center = hips_band_center
+	mode.chest_band_center = chest_band_center
+	mode.use_hips_baseline = true
+	mode.use_chest_baseline = true
+
 	# === Guide ===
 	guide = GhostGuide.new()
 	add_child(guide)
